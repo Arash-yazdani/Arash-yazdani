@@ -1,9 +1,3 @@
-# Copy this into the `Arash-yazdani/Arash-yazdani` repo as README.md
-
-> **Note on what changed vs your current version:** this is a map, not a bio. Every claim on your resume becomes clickable in one hop, private work is marked private and pointed at the case study, and the emoji density is way down. The panels never complained about your README, but three of them clicked through to GitHub and formed an opinion in about fifteen seconds — so the job of this file is to route them, fast. If you want the emoji back, say so; it's your profile and your voice.
-
----
-
 ## Hi, I'm Arash
 
 I'm an AI product manager who ships the product himself. I run [Modeo](https://modeo.io), an AI consulting and product studio in San Francisco, and I build voice agents, agent tooling, and the evaluation systems that keep them honest.
@@ -48,4 +42,3 @@ Eight-plus years in product: enterprise AI consulting at EVOTEK (AEG Presents, T
 [family-checker.com](https://family-checker.com) · [modeo.io](https://modeo.io) · [LinkedIn](https://www.linkedin.com/in/arashyazdanimba)
 
 Open to conversations about voice agents, agent evaluation, and healthcare AI.
-
