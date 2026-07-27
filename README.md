@@ -1,30 +1,51 @@
-### 👋 Hi, I'm Arash
+# Copy this into the `Arash-yazdani/Arash-yazdani` repo as README.md
 
-🤖 I'm an AI product manager who ships the product himself. I run [Modeo](https://modeo.io) 🏢, an AI consulting and product studio in San Francisco 🌉, and I build voice agents 🎙️, agent tooling 🛠️, and the evaluation systems 🧪 that keep them honest.
+> **Note on what changed vs your current version:** this is a map, not a bio. Every claim on your resume becomes clickable in one hop, private work is marked private and pointed at the case study, and the emoji density is way down. The panels never complained about your README, but three of them clicked through to GitHub and formed an opinion in about fifteen seconds — so the job of this file is to route them, fast. If you want the emoji back, say so; it's your profile and your voice.
 
-## 🚀 What I'm building
+---
 
-**[FamilyCheck](https://family-checker.com)** 📞💊 is my flagship: a production voice AI agent that calls elderly patients at medication times, classifies every outcome (✅ confirmed / ⏳ deferred / ❌ denied / 🚨 concern / ❓ unclear / 📵 no-answer), and alerts family caregivers 👨‍👩‍👧 within seconds when a dose is missed or a health concern surfaces. Live in private beta with 10 households at $29.99/mo.
+## Hi, I'm Arash
 
-🧱 The stack: Vapi + gpt-4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC 📊, 90+ commits 🔁). The code is private 🔒 because it's a healthcare product, but the part I care most about is public knowledge:
+I'm an AI product manager who ships the product himself. I run [Modeo](https://modeo.io), an AI consulting and product studio in San Francisco, and I build voice agents, agent tooling, and the evaluation systems that keep them honest.
 
-**🛡️ How I keep a voice agent trustworthy.** Every release is gated by a 50-scenario golden evaluation suite 🥇 (the v8 prompt passes 100% ✔️). In production, LangSmith online judges score six quality dimensions on every call, a weekly calibration loop 🔄 checks the judges against human verdicts, and failures are mined into regression datasets so the same mistake never ships twice 🚫🔁. Traces are PII-redacted 🕵️ with NER scrubbing before upload, because patient data does not belong in an observability tool.
+Most of what I know about production AI I learned from things going wrong at 2am. The repos below are mostly what I extracted afterward.
 
-## 📦 Public projects
+### What I'm building
 
-| Project | What it is |
+**[FamilyCheck](https://family-checker.com)** is my flagship: a production voice AI agent that calls patients at medication times, classifies every outcome (confirmed / deferred / denied / concern / **unclear** / no-answer), and alerts family caregivers within seconds when a dose is missed or a health concern surfaces. Live in private beta.
+
+The stack is Vapi + GPT-4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC, 90+ commits, 12 sprints).
+
+The source is private because it's a healthcare product. The engineering is not:
+
+**→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)** — architecture, design decisions, and the full evaluation progression. No source, all reasoning.
+
+The short version of the eval story: my first suite went from 71% to 100%, then I made it five times harder and the score fell to 56%. The second number was worth more. Injection resistance went 30% → 80%, PII leak held at 0% throughout, and every answered call is now judged live on six dimensions at about 0.4¢ per call.
+
+### Open source
+
+| Repo | What it is |
 |---|---|
-| 🗡️ [EXCALIBUR](https://github.com/Arash-yazdani/excalibur-ai-prd-generator) | Agentic PRD generator: six specialist agents turn a paragraph of product context into a stakeholder-ready PRD. Local, MIT, runs on a Claude subscription. |
-| 🏠 [Flip Finder](https://github.com/Arash-yazdani/Flip_Finder_Real_Estate_Agent) | Multi-agent real estate investment analyzer with a live dashboard. Four agents score market, property, and financials into a ranked recommendation. |
-| 📈 [Daily Macro Briefing](https://economy-dashboard-2tn.pages.dev/) ([repo](https://github.com/Arash-yazdani/Market-Control-Center)) | The U.S. economy in one quotable read: inflation, jobs, growth, and rates, refreshed twice a day. |
-| 🖥️ [PersepolisOS](https://github.com/Arash-yazdani/persepolis-os) | Experimental single-operator cockpit for orchestrating LLM agents across projects, with Claude and local Ollama backends. |
+| **[crisp-eval](https://github.com/Arash-yazdani/crisp-eval)** | An opinionated LLM-as-judge harness. CRISP scenario taxonomy, turn-pass vs scenario-pass, cross-family judge enforcement, deterministic safety keys, Cohen's kappa calibration, failure mining. 42 tests, no dependencies. |
+| **[webhook-outbox-kit](https://github.com/Arash-yazdani/webhook-outbox-kit)** | Fail-closed webhook signature verification across three vendor schemes, plus a transactional outbox so a queued alert can't be silently lost. 41 tests, no dependencies. |
+| **[EXCALIBUR](https://github.com/Arash-yazdani/excalibur-ai-prd-generator)** | Agentic PRD generator: six specialist agents turn a paragraph of product context into a stakeholder-ready PRD. Local, MIT. |
+| **[persepolis-os](https://github.com/Arash-yazdani/persepolis-os)** | Single-operator cockpit for orchestrating LLM agents across projects. Claude subscription + local Ollama backends. |
+| **[Flip Finder](https://github.com/Arash-yazdani/Flip_Finder_Real_Estate_Agent)** | Multi-agent real estate investment analyzer. Four agents score market, property, and financials into a ranked recommendation. Built for a property development client. |
+| **[Market Control Center](https://github.com/Arash-yazdani/Market-Control-Center)** | The U.S. economy in one quotable read: inflation, jobs, growth, rates, refreshed twice a day. [Live dashboard](https://economy-dashboard-2tn.pages.dev/). Built for an investment firm. |
 
-## 🎓 Background
+### Two things I believe about production AI
 
-💼 Eight-plus years in product across enterprise AI consulting (EVOTEK: AEG Presents 🎪, Target 🎯, UCLA Health 🏥, ActOne Group), product delivery at STRV, and my own 0-to-1 launches 🌱 (REC.US municipal marketplace, ROEME iOS app 📱). 🎓 MBA in Finance, Marketing, and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology 🧬, which is why healthcare AI keeps pulling me back.
+**Anything a regex can decide should be decided by a regex.** Handing a deterministic question to a judge model is how you end up with 0.97 on "no PII leaked" and no idea which three percent leaked.
 
-## 📬 Find me
+**A guardrail that isn't wired to something that fails a build is a wish.** Prompt text is not a safety property. A test assertion is.
 
-🌐 [family-checker.com](https://family-checker.com) · 🏢 [modeo.io](https://modeo.io) · 💼 [LinkedIn](https://www.linkedin.com/in/arashyazdanimba) · 🐙 [GitHub](https://github.com/Arash-yazdani)
+### Background
 
-💬 Open to conversations about voice agents, agent evaluation, and healthcare AI.
+Eight-plus years in product: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology — which is why healthcare AI keeps pulling me back.
+
+### Find me
+
+[family-checker.com](https://family-checker.com) · [modeo.io](https://modeo.io) · [LinkedIn](https://www.linkedin.com/in/arashyazdanimba)
+
+Open to conversations about voice agents, agent evaluation, and healthcare AI.
+
