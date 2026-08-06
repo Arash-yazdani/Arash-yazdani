@@ -8,11 +8,11 @@ Most of what I know about production AI I learned from things going wrong at 2am
 
 **[FamilyCheck](https://family-checker.com)** is my flagship: a production voice AI agent that calls patients at medication times, classifies every outcome (confirmed / deferred / denied / concern / **unclear** / no-answer), and alerts family caregivers within seconds when a dose is missed or a health concern surfaces. Live in private beta.
 
-The stack is Vapi + GPT 4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC, 90+ commits, 12 sprints).
+The stack is Vapi + GPT 4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC).
 
 The source is private because it's a healthcare product. The engineering is not:
 
-**→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)** architecture, design decisions, and the full evaluation progression. No source, all reasoning.
+**→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)**: architecture, design decisions, and the full evaluation progression. No source, all reasoning.
 
 The short version of the eval story: my first suite went from 71% to 100%, then I made it five times harder and the score fell to 56%. The second number was worth more. Injection resistance went 30% → 80%, PII leak held at 0% throughout, and every answered call is now judged live on six dimensions at about 0.4¢ per call.
 
@@ -20,7 +20,7 @@ The short version of the eval story: my first suite went from 71% to 100%, then 
 
 | Repo | What it is |
 |---|---|
-| **[crisp-eval](https://github.com/Arash-yazdani/crisp-eval)** | An opinionated LLM-as-judge harness. CRISP scenario taxonomy, turn-pass vs scenario-pass, cross-family judge enforcement, deterministic safety keys, Cohen's kappa calibration, failure mining. 42 tests, no dependencies. |
+| **[crisp-eval](https://github.com/Arash-yazdani/crisp-eval)** | An opinionated LLM-as-judge harness. CRISP scenario taxonomy, turn-pass vs scenario-pass, judge-family checks, deterministic safety keys, judge-vs-human agreement statistics, failure mining. 42 tests, no dependencies. |
 | **[webhook-outbox-kit](https://github.com/Arash-yazdani/webhook-outbox-kit)** | Fail-closed webhook signature verification across three vendor schemes, plus a transactional outbox so a queued alert can't be silently lost. 41 tests, no dependencies. |
 | **[EXCALIBUR](https://github.com/Arash-yazdani/excalibur-ai-prd-generator)** | Agentic PRD generator: six specialist agents turn a paragraph of product context into a stakeholder-ready PRD. Local, MIT. |
 | **[persepolis-os](https://github.com/Arash-yazdani/persepolis-os)** | Single-operator cockpit for orchestrating LLM agents across projects. Claude subscription + local Ollama backends. |
@@ -35,7 +35,7 @@ The short version of the eval story: my first suite went from 71% to 100%, then 
 
 ### Background
 
-11+ years in product: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology, which is why healthcare AI keeps pulling me back.
+11 years in product management, from a geospatial platform integration through enterprise AI to building AI products hands-on: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology, which is why healthcare AI keeps pulling me back.
 
 ### Find me
 
