@@ -8,7 +8,7 @@ Most of what I know about production AI I learned from things going wrong at 2am
 
 **[FamilyCheck](https://family-checker.com)** is my flagship: a production voice AI agent that calls patients at medication times, classifies every outcome (confirmed / deferred / denied / concern / **unclear** / no-answer), and alerts family caregivers within seconds when a dose is missed or a health concern surfaces. Live in private beta.
 
-The stack is Vapi + GPT-4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC, 90+ commits, 12 sprints).
+The stack is Vapi + GPT 4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + Twilio, on a FastAPI + React/TypeScript codebase I wrote solo (~18K LOC, 90+ commits, 12 sprints).
 
 The source is private because it's a healthcare product. The engineering is not:
 
@@ -35,7 +35,7 @@ The short version of the eval story: my first suite went from 71% to 100%, then 
 
 ### Background
 
-Eight-plus years in product: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology — which is why healthcare AI keeps pulling me back.
+11+ years in product: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology, which is why healthcare AI keeps pulling me back.
 
 ### Find me
 
