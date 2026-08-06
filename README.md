@@ -12,7 +12,7 @@ The stack is Vapi + GPT 4.1 + Deepgram Flux (STT) + Cartesia Sonic 3.5 (TTS) + T
 
 The source is private because it's a healthcare product. The engineering is not:
 
-**→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)** — architecture, design decisions, and the full evaluation progression. No source, all reasoning.
+**→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)** architecture, design decisions, and the full evaluation progression. No source, all reasoning.
 
 The short version of the eval story: my first suite went from 71% to 100%, then I made it five times harder and the score fell to 56%. The second number was worth more. Injection resistance went 30% → 80%, PII leak held at 0% throughout, and every answered call is now judged live on six dimensions at about 0.4¢ per call.
 
