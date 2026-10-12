@@ -16,6 +16,10 @@ The source is private because it's a healthcare product. The engineering is not:
 
 The short version of the eval story: my first suite went from 71% to 100%, then I made it five times harder and the score fell to 56%. The second number was worth more. Injection resistance went 30% → 80%, PII leak held at 0% throughout, and every answered call is now judged live on six dimensions at about 0.4¢ per call.
 
+**vault-rag** is a local retrieval-augmented generation (RAG) system over the 445-note knowledge base my Claude agents use as long-term memory. It stores 5,715 chunks in SQLite with sqlite-vec vector search and FTS5, embeds them with bge-m3 on local Ollama, and ranks notes by reciprocal rank fusion of chunk vectors, note-summary vectors and BM25. Claude answers only from the retrieved passages, cites every sentence, and replies "NOT IN VAULT" when the passages do not hold the answer. Agents reach it over MCP; it re-indexes and health-checks itself nightly.
+
+I froze a 27-question holdout set and 14 ship gates before writing any retrieval code. Against the plugin search it replaced, the correct note ranks first 44.4% of the time (from 29.6%), lands in the top 10 96.3% of the time (from 85.2%), and MRR rose from 0.500 to 0.608. Per question: 10 better, 5 worse, 12 unchanged, so treat it as a measured gain on a small set, not a significant one. Answers: 81.5% correct, all 27 grounded in the retrieved text, and 5 of 5 unanswerable questions declined. Incremental cost: $0 beyond an existing Claude subscription.
+
 ### Open source
 
 | Repo | What it is |
