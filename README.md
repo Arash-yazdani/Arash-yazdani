@@ -14,7 +14,7 @@ The source is private because it's a healthcare product. The engineering is not:
 
 **→ [familycheck-engineering](https://github.com/Arash-yazdani/familycheck-engineering)**: architecture, design decisions, and the full evaluation progression. No source, all reasoning.
 
-The short version of the eval story: my first suite went from 71% to 100%, then I made it five times harder and the score fell to 56%. The second number was worth more. Injection resistance went 30% → 80%, PII leak held at 0% throughout, and every answered call is now judged live on six dimensions at about 0.4¢ per call.
+The short version of the eval story: when I made my first suite five times harder, scenario pass fell to 56%, and that harder number was the useful one. The current 53-scenario adversarial suite passes 52 of 53 on three consecutive runs against an 80% bar, with PII and UUID leaks held at 0 of 53. A separate judge model grades every production call on six dimensions at about 0.4¢ per call, and a pre-registered blinded study put its agreement with human labels at 96% on values and 86% on status.
 
 **vault-rag** is a local retrieval-augmented generation (RAG) system over the 445-note knowledge base my Claude agents use as long-term memory. It stores 5,715 chunks in SQLite with sqlite-vec vector search and FTS5, embeds them with bge-m3 on local Ollama, and ranks notes by reciprocal rank fusion of chunk vectors, note-summary vectors and BM25. Claude answers only from the retrieved passages, cites every sentence, and replies "NOT IN VAULT" when the passages do not hold the answer. Agents reach it over MCP; it re-indexes and health-checks itself nightly.
 
@@ -39,7 +39,7 @@ I froze a 27-question holdout set and 14 ship gates before writing any retrieval
 
 ### Background
 
-11 years in product management, from a geospatial platform integration through enterprise AI to building AI products hands-on: enterprise AI consulting at EVOTEK (AEG Presents, Target, UCLA Health, ActOne Group), portfolio delivery at STRV, HCM product at ADP, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology, which is why healthcare AI keeps pulling me back.
+11 years in product management, from a geospatial platform integration through enterprise AI programs to building AI products hands-on: enterprise AI programs at EVOTEK (UCLA Health, Target, AEG Presents, ActOne Group), AI/ML product delivery at STRV, enterprise HCM accounts at ADP, product ownership at Kumon, and my own 0-to-1 launches. MBA in Finance, Marketing and Analytics from Pepperdine, and an M.S. in Cell and Molecular Biology, which is why healthcare AI keeps pulling me back.
 
 ### Find me
 
