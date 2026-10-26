@@ -20,6 +20,12 @@ The short version of the eval story: when I made my first suite five times harde
 
 I froze a 27-question holdout set and 14 ship gates before writing any retrieval code. Against the plugin search it replaced, the correct note ranks first 44.4% of the time (from 29.6%), lands in the top 10 96.3% of the time (from 85.2%), and MRR rose from 0.500 to 0.608. Per question: 10 better, 5 worse, 12 unchanged, so treat it as a measured gain on a small set, not a significant one. Answers: 81.5% correct, all 27 grounded in the retrieved text, and 5 of 5 unanswerable questions declined. Incremental cost: $0 beyond an existing Claude subscription.
 
+**[claude-econ-dashboard](https://github.com/Arash-yazdani/claude-econ-dashboard)** is my production economic briefing agent, migrated from Gemini/Groq to Claude on Amazon Bedrock. Rules pick the economic regime; Claude only writes the paragraph; a deterministic validator checks every number against the source data before anything publishes, and fails closed to a fallback card. It publishes twice a day at [claude-econ.modeo.io](https://claude-econ.modeo.io).
+
+The AWS side was most of the work. IAM user scoped to Bedrock inference plus the Marketplace permissions model access needs; Anthropic models sold through AWS Marketplace (a card on file, not direct debit); a new account refused every Claude model with 403 while token counting still succeeded, so I rewrote the model probe to a one-token generation call and wrote it up as an incident; a 0 tokens/min quota on Haiku 5.5, so it runs Claude Haiku 4.5 through `us.` and `global.` cross-region inference profiles on bedrock-runtime, with structured output through a single forced tool because the runtime rejected `output_config`. A 12-case regression gate ran before schedules were turned on, and healthchecks.io dead-man switches page Slack.
+
+Measured, not claimed: in a side-by-side run of the 12 locked cases, the original stack passed 11/12 and Claude 10/12. One Claude miss was a validator bug (it graded the year in "June 18, 2026" as a data value); the other was a low tone score. In production, one morning fell back to the safe card because an unchanged daily fed-funds print counted as a "release". Both bugs are fixed with tests (452 passing). Writer and judge are the same model, so I treat judge scores as weak evidence and the validator as the gate.
+
 ### Open source
 
 | Repo | What it is |
@@ -29,6 +35,7 @@ I froze a 27-question holdout set and 14 ship gates before writing any retrieval
 | **[EXCALIBUR](https://github.com/Arash-yazdani/excalibur-ai-prd-generator)** | Agentic PRD generator: six specialist agents turn a paragraph of product context into a stakeholder-ready PRD. Local, MIT. |
 | **[persepolis-os](https://github.com/Arash-yazdani/persepolis-os)** | Single-operator cockpit for orchestrating LLM agents across projects. Claude subscription + local Ollama backends. |
 | **[Flip Finder](https://github.com/Arash-yazdani/Flip_Finder_Real_Estate_Agent)** | Multi-agent real estate investment analyzer. Four agents score market, property, and financials into a ranked recommendation. Built for a property development client. |
+| **[claude-econ-dashboard](https://github.com/Arash-yazdani/claude-econ-dashboard)** | The economic briefing agent on Claude in Amazon Bedrock: IAM and model-access setup, cross-region inference, forced-tool structured output, validator-gated publishing, regression gate, incident write-ups. [Live](https://claude-econ.modeo.io). |
 | **[Market Control Center](https://github.com/Arash-yazdani/Market-Control-Center)** | The U.S. economy in one quotable read: inflation, jobs, growth, rates, refreshed twice a day. [Live dashboard](https://economy-dashboard-2tn.pages.dev/). Built for an investment firm. |
 
 ### Two things I believe about production AI
